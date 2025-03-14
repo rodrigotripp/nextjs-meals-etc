@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { trpc } from '../_trpc/client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function MealsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,6 +22,8 @@ export default function MealsPage() {
     }
   );
 
+  console.log('searchQuery',searchQuery);
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-6">TheMealDB Explorer</h1>
@@ -36,10 +39,12 @@ export default function MealsPage() {
           <div className="border p-4 rounded-lg">
             <h3 className="text-lg font-medium">{randomMeal.data.strMeal}</h3>
             {randomMeal.data.strMealThumb && (
-              <img 
+              <Image 
                 src={randomMeal.data.strMealThumb} 
                 alt={randomMeal.data.strMeal} 
                 className="w-48 h-48 object-cover rounded my-2"
+                width={400}
+                height={400}
               />
             )}
             <p><strong>Category:</strong> {randomMeal.data.strCategory}</p>
@@ -67,6 +72,7 @@ export default function MealsPage() {
           />
         </div>
         
+        
         {searchQuery.length > 0 && (
           <div>
             {searchResults.isLoading ? (
@@ -81,10 +87,12 @@ export default function MealsPage() {
                   <div key={meal.idMeal} className="border p-4 rounded-lg">
                     <h3 className="text-lg font-medium">{meal.strMeal}</h3>
                     {meal.strMealThumb && (
-                      <img 
+                      <Image 
                         src={meal.strMealThumb} 
                         alt={meal.strMeal} 
                         className="w-32 h-32 object-cover rounded my-2"
+                        width={400}
+                height={400}
                       />
                     )}
                     <p><strong>Category:</strong> {meal.strCategory}</p>

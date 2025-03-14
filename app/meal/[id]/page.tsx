@@ -4,6 +4,7 @@
 import { useParams } from 'next/navigation';
 import { trpc } from '../../_trpc/client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function MealDetailPage() {
   const params = useParams();
@@ -46,7 +47,7 @@ export default function MealDetailPage() {
         <div className="md:flex">
           <div className="md:w-1/3">
             {meal.strMealThumb && (
-              <img 
+              <Image 
                 src={meal.strMealThumb} 
                 alt={meal.strMeal} 
                 className="w-full h-auto object-cover"

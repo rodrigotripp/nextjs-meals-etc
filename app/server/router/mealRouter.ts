@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { publicProcedure, router } from '../trpc';
 
+const api_url =process.env.MEALS_API_BASE_URL
+
 // Define Zod schemas for meal data
 const MealSchema = z.object({
   idMeal: z.string(),
@@ -16,7 +18,7 @@ const MealSchema = z.object({
 export const mealRouter = router({
   // Get a random meal from TheMealDB
   getRandomMeal: publicProcedure.query(async () => {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+    const response = await fetch(`${api_url}random.php`);
     const data = await response.json();
     return MealSchema.parse(data.meals[0]);
   }),
@@ -25,7 +27,7 @@ export const mealRouter = router({
   searchMeals: publicProcedure
     .input(z.object({ query: z.string() }))
     .query(async ({ input }) => {
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input.query}`);
+      const response = await fetch(`${api_url}search.php?s=${input.query}`);
       const data = await response.json();
       
       // If no meals found, return empty array
@@ -39,7 +41,7 @@ export const mealRouter = router({
   getMealById: publicProcedure
     .input(z.object({ id: z.string() }))
     .query(async ({ input }) => {
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${input.id}`);
+      const response = await fetch(`${api_url}lookup.php?i=${input.id}`);
       const data = await response.json();
       
       if (!data.meals || data.meals.length === 0) {
