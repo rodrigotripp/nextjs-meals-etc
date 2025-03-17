@@ -9,13 +9,13 @@ import Image from 'next/image';
 export default function MealDetailPage() {
   const params = useParams();
   const id = params.id as string;
-  
+
   const mealQuery = trpc.meal.getMealById.useQuery(
-    { id }, 
-    { 
+    { id },
+    {
       enabled: !!id,
       refetchOnWindowFocus: false,
-    }
+    },
   );
 
   if (!id) {
@@ -27,55 +27,60 @@ export default function MealDetailPage() {
   }
 
   if (mealQuery.error) {
-    return <div className="container mx-auto p-4 text-red-500">Error: {mealQuery.error.message}</div>;
+    return (
+      <div className="container mx-auto p-4 text-red-500">Error: {mealQuery.error.message}</div>
+    );
   }
 
   const meal = mealQuery.data;
-  
+
   if (!meal) return null;
-  
+
   return (
     <div className="container mx-auto p-4">
-      <Link
-        href="/meals"
-        className="text-blue-500 hover:underline mb-4 block"
-      >
+      <Link href="/meals" className="mb-4 block text-blue-500 hover:underline">
         &larr; Back to meal list
       </Link>
-      
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+
+      <div className="overflow-hidden rounded-lg bg-white shadow-lg">
         <div className="md:flex">
           <div className="md:w-1/3">
             {meal.strMealThumb && (
-              <Image 
-                src={meal.strMealThumb} 
-                alt={meal.strMeal} 
-                className="w-full h-auto object-cover"
+              <Image
+                width={400}
+                height={400}
+                src={meal.strMealThumb}
+                alt={meal.strMeal}
+                className="h-auto w-full object-cover"
               />
             )}
           </div>
           <div className="p-4 md:w-2/3">
-            <h1 className="text-2xl font-bold mb-2">{meal.strMeal}</h1>
+            <h1 className="mb-2 text-2xl font-bold">{meal.strMeal}</h1>
             <div className="mb-4">
               {meal.strCategory && (
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <span className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
                   {meal.strCategory}
                 </span>
               )}
               {meal.strArea && (
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <span className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
                   {meal.strArea}
                 </span>
               )}
-              {meal.strTags && meal.strTags.split(',').map(tag => (
-                <span key={tag.trim()} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                  {tag.trim()}
-                </span>
-              ))}
+              {meal.strTags &&
+                meal.strTags.split(',').map((tag) => (
+                  <span
+                    key={tag.trim()}
+                    className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700"
+                  >
+                    {tag.trim()}
+                  </span>
+                ))}
             </div>
-            
-            <h2 className="text-xl font-semibold mb-2">Instructions</h2>
-            <p className="text-gray-700 mb-4">{meal.strInstructions}</p>
+
+            <h2 className="mb-2 text-xl font-semibold">Instructions</h2>
+            <p className="mb-4 text-gray-700">{meal.strInstructions}</p>
           </div>
         </div>
       </div>
