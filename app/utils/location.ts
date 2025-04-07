@@ -1,4 +1,4 @@
-function getLocation() {
+export function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(returnPosition)
   }
@@ -6,7 +6,7 @@ function getLocation() {
     return 'not working';
   }
 }
-function returnPosition(position: GeolocationPosition) {
+export function returnPosition(position: GeolocationPosition) {
   return {
     lat: position.coords.latitude,
     lon: position.coords.longitude

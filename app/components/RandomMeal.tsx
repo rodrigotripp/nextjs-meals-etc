@@ -1,3 +1,5 @@
+'use client'
+
 import { trpc } from '../_trpc/client';
 const {mealRouter} = trpc;
 import Meal from '../components/Meal';
