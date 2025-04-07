@@ -1,10 +1,9 @@
 import { router, publicProcedure } from './trpc';
 import { mealRouter } from './router/mealRouter';
+import { weatherRouter } from './router/weatherRouter';
 
 export const appRouter = router({
-  getTodos: publicProcedure.query(async () => {
-    return [1, 2, 3];
-  }),
-  meal: mealRouter,
+  mealRouter,
+  weatherRouter
 });
 export type AppRouter = typeof appRouter;

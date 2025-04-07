@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import SimpleSSRComponent from './components/SimpleSSRComponent';
 
 export default function Home() {

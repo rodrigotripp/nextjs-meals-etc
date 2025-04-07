@@ -10,7 +10,7 @@ export default function MealDetailPage() {
   const params = useParams();
   const id = params.id as string;
 
-  const mealQuery = trpc.meal.getMealById.useQuery(
+  const mealQuery = trpc.mealRouter.getMealById.useQuery(
     { id },
     {
       enabled: !!id,
