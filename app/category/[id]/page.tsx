@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { trpc } from '../../_trpc/client';
+import { trpc } from '@/app/_trpc/client';
 import SearchResults from '@/app/components/SearchResults';
 
 export default function Category() {
