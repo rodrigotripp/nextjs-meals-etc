@@ -1,4 +1,4 @@
-import { router, publicProcedure } from './trpc';
+import { router } from './trpc';
 import { mealRouter } from './router/mealRouter';
 import { weatherRouter } from './router/weatherRouter';
 

@@ -40,7 +40,7 @@ export default function Search() {
           ) : searchResults.data ? (
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {searchResults.data.map((meal: Meal) => (
-                <SearchResults {...meal} />
+                <SearchResults key={meal.idMeal} {...meal} />
               ))}
             </div>
           ) : null}

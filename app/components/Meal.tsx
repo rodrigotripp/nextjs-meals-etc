@@ -1,5 +1,3 @@
-import { MealSchema } from '../types';
-import z from 'zod';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Meal as MealType } from '../types';
