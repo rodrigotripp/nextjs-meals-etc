@@ -38,7 +38,7 @@ export default function Search() {
           ) : searchResults.data?.length === 0 ? (
             <p>No results found</p>
           ) : searchResults.data ? (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
               {searchResults.data.map((meal: Meal) => (
                 <SearchResults key={meal.idMeal} {...meal} />
               ))}
