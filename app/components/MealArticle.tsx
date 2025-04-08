@@ -29,9 +29,11 @@ export default function MealArticle(meal: Meal) {
               </Link>
             )}
             {meal.strArea && (
-              <span className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
-                {meal.strArea}
-              </span>
+              <Link href={`/area/${meal.strArea}`}>
+                <span className="mb-2 mr-2 inline-block rounded-full bg-blue-200 px-3 py-1 text-sm font-semibold text-gray-700">
+                  {meal.strArea}
+                </span>
+              </Link>
             )}
             {meal.strTags &&
               meal.strTags.split(',').map((tag) => (
