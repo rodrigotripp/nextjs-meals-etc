@@ -11,7 +11,7 @@ export default function RandomMeal() {
   });
   const { isLoading, error, data, refetch } = randomMeal;
   return (
-    <div className="mb-8">
+    <div className="my-4">
       <h2 className="mb-4 text-xl font-semibold">Random Meal</h2>
       {isLoading ? (
         <p>Loading random meal...</p>
