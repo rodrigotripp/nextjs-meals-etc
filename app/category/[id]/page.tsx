@@ -2,7 +2,8 @@
 
 import { useParams } from 'next/navigation';
 import { trpc } from '@/app/_trpc/client';
-import SearchResults from '@/app/components/SearchResults';
+import { lazy, Suspense } from 'react';
+const LazySearchResults = lazy(() => import('@/app/components/SearchResults'));
 
 export default function Category() {
   const { mealRouter } = trpc;
@@ -14,7 +15,11 @@ export default function Category() {
   );
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {meals.data?.map((meal) => <SearchResults key={meal.idMeal} {...meal} />)}
+      {meals.data?.map((meal) =>
+          <Suspense key={meal.idMeal} fallback={<div>Loading...</div>}>
+            <LazySearchResults key={meal.idMeal} {...meal} />
+          </Suspense>
+      )}
     </div>
   );
 }

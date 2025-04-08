@@ -7,6 +7,7 @@ export default function SearchResults(meal: Meal) {
       <h3 className="text-lg font-medium">{meal.strMeal}</h3>
       {meal.strMealThumb && (
         <Image
+          priority={true}
           src={meal.strMealThumb}
           alt={meal.strMeal}
           className="my-2 h-32 w-32 rounded object-cover"

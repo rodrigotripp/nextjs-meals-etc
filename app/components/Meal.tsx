@@ -10,6 +10,7 @@ function Meal(props: MealType) {
         <h3 className="text-lg font-medium">{strMeal}</h3>
         {strMealThumb && (
           <Image
+            priority={true}
             src={strMealThumb}
             alt={strMeal}
             className="my-2 h-48 w-48 rounded object-cover"
