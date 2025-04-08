@@ -1,16 +1,12 @@
-import { MealSchema } from "../types"
+import { MealSchema } from '../types';
 import z from 'zod';
-import Image from "next/image";
+import Image from 'next/image';
 import Link from 'next/link';
+import { Meal as MealType } from '../types';
 
-type Meal = z.infer<typeof MealSchema> & {
-  refetch: () => void;
-}
-
-function Meal(props: Meal) {
+function Meal(props: MealType) {
   const { strMeal, strMealThumb, strCategory, strArea, idMeal, refetch } = props;
   return (
-
     <div className="rounded-lg border p-4">
       <Link href={`/meal/${idMeal}`}>
         <h3 className="text-lg font-medium">{strMeal}</h3>
@@ -33,16 +29,16 @@ function Meal(props: Meal) {
           <strong>ID:{idMeal}</strong>
         </p>
       </Link>
-      <button
-        onClick={() => refetch()}
-        className="mt-2 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-      >
-        Get Another Random Meal
-      </button>
+      {refetch && (
+        <button
+          onClick={() => refetch()}
+          className="mt-2 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+        >
+          Get Another Random Meal
+        </button>
+      )}
     </div>
-  )
+  );
 }
 
-
-
-export default Meal
+export default Meal;

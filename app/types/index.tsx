@@ -8,24 +8,29 @@ export const MealType = {
   strArea: z.string().nullable().optional(),
   strInstructions: z.string().nullable().optional(),
   strMealThumb: z.string().nullable().optional(),
-  strTags: z.string().nullable().optional()
+  strTags: z.string().nullable().optional(),
+};
+export type Meal = z.infer<typeof MealSchema> & {
+  refetch?: () => void;
 };
 export const MealSchema = z.object(MealType);
 
 export const CityType = {
-  clouds: z.object({all: z.number()}),
-  coord: z.object({lat:z.number(), lon: z.number()}),
+  clouds: z.object({ all: z.number() }),
+  coord: z.object({ lat: z.number(), lon: z.number() }),
   dt: z.number(),
   id: z.number(),
   rain: z.string().nullish(),
   snow: z.string().nullish(),
   name: z.string(),
-  weather: z.array(z.object({
-    id: z.number(), // Weather condition id
-    main: z.string(), // Grupo de condiciones (Rain, Snow, etc)
-    description: z.string(), // Descripción dentro del grupo
-    icon: z.string(), // ID del ícono
-  })),
+  weather: z.array(
+    z.object({
+      id: z.number(), // Weather condition id
+      main: z.string(), // Grupo de condiciones (Rain, Snow, etc)
+      description: z.string(), // Descripción dentro del grupo
+      icon: z.string(), // ID del ícono
+    }),
+  ),
   main: z.object({
     temp: z.number(), // Temperatura
     feels_like: z.number(), // Sensación térmica
@@ -50,11 +55,11 @@ export const CityType = {
     sunrise: z.number().optional(), // Amanecer
     sunset: z.number().optional(), // Atardecer
   }),
-}
+};
 
 export const WeatherApiResponse = z.object({
   cod: z.string(),
   count: z.number(),
   list: z.array(z.object(CityType)),
-  message: z.string()
+  message: z.string(),
 });
