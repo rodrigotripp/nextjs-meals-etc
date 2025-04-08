@@ -39,7 +39,7 @@ function Meal(props: MealType) {
         )}
         
       </div>
-      <div className='max-w-xl hidden lg:inline '><p>{props.strInstructions}</p></div>
+      <div className='max-w-xl hidden lg:flex items-center'><p>{props.strInstructions}</p></div>
     </div>
   );
 }

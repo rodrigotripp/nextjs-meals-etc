@@ -17,20 +17,19 @@ export default function MealArticle(meal: Meal) {
             />
           )}
         </div>
-        <div className="px-4 md:w-2/3">
+        <div className="px-4 md:w-2/3 flex flex-col justify-center text-gray-700">
           <h1 className="mb-2 text-2xl font-bold">{meal.strMeal}</h1>
-          Link
           <div className="mb-2">
             {meal.strCategory && (
               <Link href={`/category/${meal.strCategory}`}>
-                <span className="mb-2 mr-2 inline-block rounded-full bg-green-200 px-3 py-1 text-sm font-semibold text-gray-700">
+                <span className="mb-2 mr-2 inline-block rounded-full bg-green-200 px-3 py-1 text-sm font-semibold">
                   {meal.strCategory}
                 </span>
               </Link>
             )}
             {meal.strArea && (
               <Link href={`/area/${meal.strArea}`}>
-                <span className="mb-2 mr-2 inline-block rounded-full bg-blue-200 px-3 py-1 text-sm font-semibold text-gray-700">
+                <span className="mb-2 mr-2 inline-block rounded-full bg-blue-200 px-3 py-1 text-sm font-semibold">
                   {meal.strArea}
                 </span>
               </Link>
@@ -39,14 +38,14 @@ export default function MealArticle(meal: Meal) {
               meal.strTags.split(',').map((tag) => (
                 <span
                   key={tag.trim()}
-                  className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700"
+                  className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold"
                 >
                   {tag.trim()}
                 </span>
               ))}
           </div>
           <h2 className="mb-2 text-xl font-semibold">Instructions</h2>
-          <p className="mb-2 text-gray-700">{meal.strInstructions}</p>
+          <p className="mb-2">{meal.strInstructions}</p>
         </div>
       </div>
     </div>
