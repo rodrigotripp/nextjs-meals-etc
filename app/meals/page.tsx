@@ -17,7 +17,6 @@ export default function MealsPage() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="mb-6 text-2xl font-bold">TheMealDB Explorer</h1>
       <Search />
       <Suspense fallback={<div>Check</div>}>
         <LazyRandom />

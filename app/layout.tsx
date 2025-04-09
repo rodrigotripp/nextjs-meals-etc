@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import TRPCProvider from './_trpc/Provider';
+import { AppProviders } from '@/app/components/AppProviders';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {' '}
-        <TRPCProvider>{children}</TRPCProvider>
+        <main className="flex min-h-screen flex-col items-center justify-between ">
+          <AppProviders>
+            <Header />
+            {children}
+            <Footer />
+          </AppProviders>
+        </main>
       </body>
     </html>
   );
