@@ -1,7 +1,9 @@
 export default function Header() {
   return (
-    <header className="w-full h-28 bg-white text-black flex items-center">
-      <h1 className="m-6 text-2xl font-bold">TheMealDB Explorer</h1>
+    <header className="flex h-28 w-full items-center bg-white text-black">
+      <div className="container mx-auto p-4">
+        <h1 className="my-6 text-2xl font-bold">TheMealDB Explorer</h1>
+      </div>
     </header>
-  )
+  );
 }

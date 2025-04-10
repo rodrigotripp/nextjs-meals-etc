@@ -5,8 +5,8 @@ import { Meal as MealType } from '../types';
 function Meal(props: MealType) {
   const { strMeal, strMealThumb, strCategory, strArea, idMeal, refetch } = props;
   return (
-    <div className="rounded-lg border p-4 flex flex-row justify-around">
-      <div className='flex flex-col justify-around'>
+    <div className="flex flex-row justify-start gap-44 rounded-lg border p-4">
+      <div className="flex flex-col justify-around p-4">
         <Link href={`/meal/${idMeal}`}>
           <h3 className="text-lg font-medium">{strMeal}</h3>
           {strMealThumb && (
@@ -37,9 +37,10 @@ function Meal(props: MealType) {
             Get Another Random Meal
           </button>
         )}
-        
       </div>
-      <div className='max-w-xl hidden lg:flex items-center'><p>{props.strInstructions}</p></div>
+      <div className="hidden max-w-xl items-center text-justify lg:flex">
+        <p>{props.strInstructions}</p>
+      </div>
     </div>
   );
 }

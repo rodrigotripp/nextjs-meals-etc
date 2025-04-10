@@ -12,21 +12,13 @@ export default function RandomMeal() {
   const { isLoading, error, data, refetch } = randomMeal;
   return (
     <div className="my-4">
-      <h2 className="mb-4 text-xl font-semibold">
-        Random Meal
-      </h2>
+      <h2 className="mb-4 text-xl font-semibold">Random Meal</h2>
       {isLoading ? (
         <p>Loading random meal...</p>
       ) : error ? (
-        <p className="text-red-500">
-          Error loading meal: {error.message}
-        </p>
+        <p className="text-red-500">Error loading meal: {error.message}</p>
       ) : data ? (
-        <Meal {...data} 
-          idMeal={data.idMeal} 
-          strMeal={data.strMeal} 
-          refetch={refetch} 
-        />
+        <Meal {...data} idMeal={data.idMeal} strMeal={data.strMeal} refetch={refetch} />
       ) : null}
     </div>
   );

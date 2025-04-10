@@ -16,18 +16,19 @@ export default function MealListPage({ type }: MealListPageProps) {
   const params = useParams();
   const paramValue = params.id as string;
 
-  const query = type === 'category'
-    ? mealRouter.getMealByCategory.useQuery(
-        { category: paramValue },
-        { enabled: !!paramValue, refetchOnWindowFocus: false }
-      )
-    : mealRouter.getMealsByArea.useQuery(
-        { area: paramValue },
-        { enabled: !!paramValue, refetchOnWindowFocus: false }
-      );
+  const query =
+    type === 'category'
+      ? mealRouter.getMealByCategory.useQuery(
+          { category: paramValue },
+          { enabled: !!paramValue, refetchOnWindowFocus: false },
+        )
+      : mealRouter.getMealsByArea.useQuery(
+          { area: paramValue },
+          { enabled: !!paramValue, refetchOnWindowFocus: false },
+        );
 
   return (
-    <div className='p-4'>
+    <div className="p-4">
       <Link href="/meals" className="mb-4 block text-blue-500 hover:underline">
         &larr; Back to home page
       </Link>

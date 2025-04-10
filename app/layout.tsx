@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {' '}
-        <main className="flex min-h-screen flex-col items-center justify-between ">
+        <main className="flex min-h-screen flex-col items-center justify-between">
           <AppProviders>
             <Header />
             {children}

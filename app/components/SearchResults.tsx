@@ -3,8 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 export default function SearchResults(meal: Meal) {
   return (
-    <div key={meal.idMeal} className="flex max-w-xs flex-col items-center  justify-between rounded-lg border p-4">
-      <h3 className="text-md font-medium text-ellipsis md:text-clip">{meal.strMeal}</h3>
+    <div
+      key={meal.idMeal}
+      className="flex max-w-xs flex-col items-center justify-between rounded-lg border p-4"
+    >
+      <h3 className="text-md text-ellipsis font-medium md:text-clip">{meal.strMeal}</h3>
       {meal.strMealThumb && (
         <Image
           priority={true}

@@ -42,14 +42,14 @@ export const mealRouter = router({
       return meals;
     }),
   getMealsByArea: publicProcedure
-  .input(z.object({ area: z.string() }))
-  .query(async ({ input }): Promise<Meal[]> => {
-    const response = await fetch(`${api_url}filter.php?a=${input.area}`);
-    const data = await response.json();
-    const { meals } = data;
-    if (!meals || meals.length === 0) {
-      throw new Error('Meal not found');
-    }
-    return meals;
-  }),
+    .input(z.object({ area: z.string() }))
+    .query(async ({ input }): Promise<Meal[]> => {
+      const response = await fetch(`${api_url}filter.php?a=${input.area}`);
+      const data = await response.json();
+      const { meals } = data;
+      if (!meals || meals.length === 0) {
+        throw new Error('Meal not found');
+      }
+      return meals;
+    }),
 });
