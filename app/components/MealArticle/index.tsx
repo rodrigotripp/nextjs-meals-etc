@@ -1,12 +1,14 @@
-import { Meal } from '../types';
+import { Meal } from '@/app/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getIngredients } from '@/app/_utils/parseIngredients';
 
 export default function MealArticle(meal: Meal) {
+  const ingredients = getIngredients(meal);
   return (
-    <div className="overflow-hidden rounded-lg bg-white shadow-lg">
+    <div className="overflow-hidden rounded-lg bg-white shadow-lg pb-4">
       <div className="md:flex">
-        <div className="self-center md:w-1/3">
+        <div className="self-start md:w-1/3">
           {meal.strMealThumb && (
             <Image
               width={400}
@@ -41,7 +43,7 @@ export default function MealArticle(meal: Meal) {
               meal.strTags.split(',').map((tag) => (
                 <>
                   <span
-                    key={tag.trim()}
+                    key={tag}
                     className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold"
                   >
                     {tag.trim()}
@@ -49,8 +51,23 @@ export default function MealArticle(meal: Meal) {
                 </>
               ))}
           </div>
-          <h2 className="mb-2 text-xl font-semibold">Instructions</h2>
-          <p className="mb-2">{meal.strInstructions}</p>
+          <div>
+            <h2 className="my-2 text-xl font-semibold">Ingredients</h2>
+            <ul>
+              {ingredients.map((item) => {
+                return item.ingredient ? (
+                  <li key={item.ingredient} className="grid grid-cols-2 py-1">
+                    <span className="font-medium">{item.ingredient}</span>
+                    <span className="text-gray-600">{item.measure}</span>
+                  </li>
+                ) : null;
+              })}
+            </ul>
+          </div>
+          <div>
+            <h2 className="my-1 text-xl font-semibold">Instructions</h2>
+            <p className="text-justify">{meal.strInstructions}</p>
+          </div>
         </div>
       </div>
     </div>

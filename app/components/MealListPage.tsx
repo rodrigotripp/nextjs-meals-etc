@@ -36,7 +36,7 @@ export default function MealListPage({ type }: MealListPageProps) {
       <h2 className="mb-6 text-2xl font-bold">{paramValue}</h2>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
         {query.data?.map((meal) => (
-          <Suspense key={meal.idMeal} fallback={<SearchResults/>}>
+          <Suspense key={meal.idMeal} fallback={<SearchResults />}>
             <LazySearchResults {...meal} />
           </Suspense>
         ))}

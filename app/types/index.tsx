@@ -1,5 +1,11 @@
-// Define Zod schemas for meal data
 import { z } from 'zod';
+
+const dynamicMealFields: Record<string, z.ZodTypeDef> = {};
+
+for (let i = 1; i <= 20; i++) {
+  dynamicMealFields[`strIngredient${i}`] = z.string().nullable().optional();
+  dynamicMealFields[`strMeasure${i}`] = z.string().nullable().optional();
+}
 
 export const MealType = {
   idMeal: z.string(),
@@ -9,6 +15,12 @@ export const MealType = {
   strInstructions: z.string().nullable().optional(),
   strMealThumb: z.string().nullable().optional(),
   strTags: z.string().nullable().optional(),
+  strYoutube: z.string().nullable().optional(),
+  strSource: z.string().nullable().optional(),
+  strImageSource: z.string().nullable().optional(),
+  strCreativeCommonsConfirmed: z.string().nullable().optional(),
+  dateModified: z.string().nullable().optional(),
+  ...dynamicMealFields,
 };
 export type Meal = z.infer<typeof MealSchema> & {
   refetch?: () => void;
