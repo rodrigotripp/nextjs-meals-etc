@@ -19,9 +19,9 @@ export default function MealArticle(meal: Meal) {
             />
           )}
         </div>
-        <div className="flex flex-col justify-center px-4 text-gray-700 md:w-2/3">
+        <div className="flex flex-col gap-2 justify-center px-4 text-gray-700 md:w-2/3">
           <h1 className="mb-2 text-2xl font-bold">{meal.strMeal}</h1>
-          <div className="mb-2">
+          <div>
             <span>Categories: </span>
             {meal.strCategory && (
               <Link href={`/category/${meal.strCategory}`}>
