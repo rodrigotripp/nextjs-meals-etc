@@ -9,7 +9,6 @@ export const mealRouter = router({
   getRandomMeal: publicProcedure.query(async (): Promise<Meal> => {
     const response = await fetch(`${api_url}random.php`);
     const data = await response.json();
-    console.log('data', data);
     return MealSchema.parse(data.meals[0]);
   }),
   searchMeals: publicProcedure

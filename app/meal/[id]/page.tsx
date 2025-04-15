@@ -30,11 +30,8 @@ export default function MealDetailPage() {
       <div className="container mx-auto p-4 text-red-500">Error: {mealQuery.error.message}</div>
     );
   }
-
   const meal = mealQuery.data;
-
   if (!meal) return null;
-
   return (
     <div className="container mx-auto">
       <Link href="/meals" className="mb-4 block text-blue-500 hover:underline">
