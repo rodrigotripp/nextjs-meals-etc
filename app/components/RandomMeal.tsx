@@ -1,24 +1,15 @@
-'use client';
-
-import { trpc } from '../_trpc/client';
-const { mealRouter } = trpc;
+import { createCaller } from '../server';
 import Meal from '../components/Meal';
 
-export default function RandomMeal() {
-  //tRPC hooks to fetch data
-  const randomMeal = mealRouter.getRandomMeal.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
-  const { isLoading, error, data, refetch } = randomMeal;
+export default async function RandomMeal() {
+  const caller = createCaller({headers: new Headers});
+  const randomMeal = await caller.mealRouter.getRandomMeal();
+
   return (
     <div className="my-4">
       <h2 className="mb-4 text-xl font-semibold">Random Meal</h2>
-      {isLoading ? (
-        <p>Loading random meal...</p>
-      ) : error ? (
-        <p className="text-red-500">Error loading meal: {error.message}</p>
-      ) : data ? (
-        <Meal {...data} idMeal={data.idMeal} strMeal={data.strMeal} refetch={refetch} />
+      {randomMeal ? (
+        <Meal {...randomMeal} idMeal={randomMeal.idMeal} strMeal={randomMeal.strMeal}/>
       ) : null}
     </div>
   );

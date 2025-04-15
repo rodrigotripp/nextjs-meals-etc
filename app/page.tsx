@@ -1,14 +1,17 @@
-import Counter from './components/Counter';
-import SimpleSSRComponent from './components/SimpleSSRComponent';
+import { createCaller } from './server';
 
-export default function Home() {
+export default async function Home() {
+  const caller = createCaller({headers: new Headers});
+
+  const randomMeal = await caller.mealRouter.getRandomMeal();
+  const pastaMeals = await caller.mealRouter.getMealByCategory({ category: 'Pasta' });
+  console.log(pastaMeals);
   return (
     <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
       <p>
         <b>Hola</b>
       </p>
-      <Counter />
-      <SimpleSSRComponent />
+      <p>{randomMeal.strCategory}</p>
     </div>
   );
 }

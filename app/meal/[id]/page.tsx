@@ -1,36 +1,17 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-import { trpc } from '../../_trpc/client';
 import Link from 'next/link';
 import MealArticle from '@/app/components/MealArticle';
+import { createCaller } from '@/app/server';
 
-export default function MealDetailPage() {
-  const params = useParams();
-  const id = params.id as string;
-
-  const mealQuery = trpc.mealRouter.getMealById.useQuery(
-    { id },
-    {
-      enabled: !!id,
-      refetchOnWindowFocus: false,
-    },
-  );
+export default async function MealDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
+  const caller = createCaller({ headers: new Headers });
+  const mealQuery = await caller.mealRouter.getMealById({ id })
 
   if (!id) {
     return <div className="container mx-auto p-4">Invalid meal ID</div>;
   }
 
-  if (mealQuery.isLoading) {
-    return <div className="container mx-auto p-4">Loading meal details...</div>;
-  }
-
-  if (mealQuery.error) {
-    return (
-      <div className="container mx-auto p-4 text-red-500">Error: {mealQuery.error.message}</div>
-    );
-  }
-  const meal = mealQuery.data;
+  const meal = mealQuery;
   if (!meal) return null;
   return (
     <div className="container mx-auto">
