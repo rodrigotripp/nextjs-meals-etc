@@ -6,7 +6,7 @@ import { getIngredients } from '@/app/_utils/parseIngredients';
 export default function MealArticle(meal: Meal) {
   const ingredients = getIngredients(meal);
   return (
-    <div className="overflow-hidden rounded-lg bg-white shadow-lg pb-4">
+    <div className="overflow-hidden rounded-lg bg-white pb-4 shadow-lg">
       <div className="md:flex">
         <div className="self-start md:w-1/3">
           {meal.strMealThumb && (
@@ -19,7 +19,7 @@ export default function MealArticle(meal: Meal) {
             />
           )}
         </div>
-        <div className="flex flex-col gap-2 justify-center px-4 text-gray-700 md:w-2/3">
+        <div className="flex flex-col justify-center gap-2 px-4 text-gray-700 md:w-2/3">
           <h1 className="mb-2 text-2xl font-bold">{meal.strMeal}</h1>
           <div>
             <span>Categories: </span>

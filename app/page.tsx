@@ -1,7 +1,7 @@
 import { createCaller } from './server';
 
 export default async function Home() {
-  const caller = createCaller({headers: new Headers});
+  const caller = createCaller({ headers: new Headers() });
 
   const randomMeal = await caller.mealRouter.getRandomMeal();
   const pastaMeals = await caller.mealRouter.getMealByCategory({ category: 'Pasta' });
