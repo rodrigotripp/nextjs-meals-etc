@@ -11,12 +11,11 @@ type MealListPageProps = {
 };
 
 export default async function MealListPage({ type, argString }: MealListPageProps) {
-
-  const caller = createCaller({headers: new Headers});
+  const caller = createCaller({ headers: new Headers() });
   const query =
     type === 'category'
-      ? await caller.mealRouter.getMealByCategory({category: argString})
-      : await caller.mealRouter.getMealsByArea({area: argString})
+      ? await caller.mealRouter.getMealByCategory({ category: argString })
+      : await caller.mealRouter.getMealsByArea({ area: argString });
 
   return (
     <div className="p-4">
