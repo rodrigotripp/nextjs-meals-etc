@@ -4,7 +4,6 @@ import { Meal, MealSchema } from '@/app/types';
 
 const api_url = process.env.MEALS_API_BASE_URL;
 
-// Create meal router with procedures
 export const mealRouter = router({
   getRandomMeal: publicProcedure.query(async (): Promise<Meal> => {
     const response = await fetch(`${api_url}random.php`);

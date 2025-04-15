@@ -54,9 +54,9 @@ export default function MealArticle(meal: Meal) {
           <div>
             <h2 className="my-2 text-xl font-semibold">Ingredients</h2>
             <ul>
-              {ingredients.map((item) => {
+              {ingredients.map((item, index) => {
                 return item.ingredient ? (
-                  <li key={item.ingredient} className="grid grid-cols-2 py-1">
+                  <li key={`${item.ingredient}_${index}`} className="grid grid-cols-2 py-1">
                     <span className="font-medium">{item.ingredient}</span>
                     <span className="text-gray-600">{item.measure}</span>
                   </li>
