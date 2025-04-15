@@ -10,6 +10,7 @@ const LazySearchResults = lazy(() => import('@/app/components/SearchResults'));
 
 type MealListPageProps = {
   type: 'category' | 'area';
+  id: string;
 };
 
 export default function MealListPage({ type }: MealListPageProps) {

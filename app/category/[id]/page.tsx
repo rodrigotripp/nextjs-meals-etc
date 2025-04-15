@@ -1,5 +1,5 @@
-'use client';
 import MealListPage from '@/app/components/MealListPage';
-export default function Category() {
-  return <MealListPage type="category" />;
+export default function Category({ params }: { params: { id: string } }) {
+  const {id} = params;
+  return <MealListPage type="category" id={id}/>;
 }
