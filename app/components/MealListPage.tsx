@@ -1,8 +1,7 @@
 import { lazy, Suspense } from 'react';
 import Link from 'next/link';
 import SearchResults from './SearchResultSkeleton';
-import { createCaller } from '../server';
-
+import { caller } from '../server/trpc/caller';
 const LazySearchResults = lazy(() => import('@/app/components/SearchResults'));
 
 type MealListPageProps = {
@@ -11,7 +10,6 @@ type MealListPageProps = {
 };
 
 export default async function MealListPage({ type, argString }: MealListPageProps) {
-  const caller = createCaller({ headers: new Headers() });
   const query =
     type === 'category'
       ? await caller.mealRouter.getMealByCategory({ category: argString })

@@ -1,8 +1,6 @@
-import { createCaller } from '../server';
 import Meal from '../components/Meal';
-
+import { caller } from '../server/trpc/caller';
 export default async function RandomMeal() {
-  const caller = createCaller({ headers: new Headers() });
   const randomMeal = await caller.mealRouter.getRandomMeal();
 
   return (
