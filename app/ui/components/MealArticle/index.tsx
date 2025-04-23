@@ -37,12 +37,12 @@ export default function MealArticle(meal: Meal) {
                 </span>
               ))}
           </div>
-          <div>
+          <div className='border-stone-950 border-[3px] p-2 w-max rounded-lg overflow-hidden'>
             <h2 className="my-2 text-xl font-semibold">Ingredients</h2>
-            <ul>
+            <ul className='w-96'>
               {ingredients.map((item, index) => {
                 return item.ingredient ? (
-                  <li key={`${item.ingredient}_${index}`} className="grid grid-cols-2 py-1">
+                  <li key={`${item.ingredient}_${index}`} className={`grid grid-cols-2 py-1 ${index%2 === 0 ? 'bg-slate-200' : 'bg-slate-50'}`}>
                     <span className="font-medium">{item.ingredient}</span>
                     <span className="text-gray-600">{item.measure}</span>
                   </li>
