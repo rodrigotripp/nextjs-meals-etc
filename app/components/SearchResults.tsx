@@ -11,7 +11,7 @@ export default function SearchResults(meal: Meal) {
       {meal.strMealThumb && (
         <Image
           priority={true}
-          src={meal.strMealThumb}
+          src={`${meal.strMealThumb}/small`}
           alt={meal.strMeal}
           className="my-2 h-32 w-32 rounded object-cover"
           width={400}

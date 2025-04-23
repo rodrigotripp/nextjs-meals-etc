@@ -1,9 +1,15 @@
 import { Meal } from '@/app/types';
 import Image from 'next/image';
-import Link from 'next/link';
+import LinkPill from '../LinkPill';
 import { getIngredients } from '@/app/_utils/parseIngredients';
 
+export type PillColor = 'green' | 'blue' | 'red' | 'cyan' | 'pink' | 'gray';
+
 export default function MealArticle(meal: Meal) {
+  const colors: PillColor[] = ['green', 'blue', 'red', 'cyan', 'pink', 'gray'];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  const color = colors[randomIndex] as PillColor;
+
   const ingredients = getIngredients(meal);
   return (
     <div className="overflow-hidden rounded-lg bg-white pb-4 shadow-lg">
@@ -24,31 +30,19 @@ export default function MealArticle(meal: Meal) {
           <div>
             <span>Categories: </span>
             {meal.strCategory && (
-              <Link href={`/category/${meal.strCategory}`}>
-                <span className="mb-2 mr-2 inline-block rounded-full bg-green-200 px-3 py-1 text-sm font-semibold">
-                  {meal.strCategory}
-                </span>
-              </Link>
+              <LinkPill type={'category'} string={meal.strCategory} color={color} />
             )}
-            {meal.strArea && (
-              <Link href={`/area/${meal.strArea}`}>
-                <span className="mb-2 mr-2 inline-block rounded-full bg-blue-200 px-3 py-1 text-sm font-semibold">
-                  {meal.strArea}
-                </span>
-              </Link>
-            )}
+            {meal.strArea && <LinkPill type={'area'} string={meal.strArea} color={color} />}
             <br />
             {meal.strTags ? <span>Tags: </span> : null}
             {meal.strTags &&
               meal.strTags.split(',').map((tag) => (
-                <>
-                  <span
-                    key={tag}
-                    className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold"
-                  >
-                    {tag.trim()}
-                  </span>
-                </>
+                <span
+                  key={tag}
+                  className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold"
+                >
+                  {tag.trim()}
+                </span>
               ))}
           </div>
           <div>

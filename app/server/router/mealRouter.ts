@@ -51,4 +51,13 @@ export const mealRouter = router({
       }
       return meals;
     }),
+  getCategories: publicProcedure.query(async (): Promise<Meal[]> => {
+    const response = await fetch(`${api_url}list.php?c=list`);
+    const data = await response.json();
+    const { meals } = data;
+    if (!meals || meals.length === 0) {
+      throw new Error('Meal not found');
+    }
+    return meals;
+  }),
 });
