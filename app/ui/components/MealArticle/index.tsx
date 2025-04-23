@@ -24,7 +24,7 @@ export default function MealArticle(meal: Meal) {
           <div>
             <span>Categories: </span>
             {meal.strCategory && <LinkPill type={'category'} string={meal.strCategory} />}
-            {meal.strArea && <LinkPill type={'area'} string={meal.strArea} />}
+            {meal.strArea  && <LinkPill type={'area'} string={meal.strArea} />}
             <br />
             {meal.strTags ? <span>Tags: </span> : null}
             {meal.strTags &&

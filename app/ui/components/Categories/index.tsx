@@ -7,10 +7,9 @@ async function Categories() {
     <div className="flex w-auto flex-wrap justify-start gap-1 my-2">
       {categories.map(cat => (
         
-        cat.strCategory !== null || undefined ?
+        
         <LinkPill key={cat.strCategory} type="category" string={cat.strCategory} />
-        :
-        null
+   
       ))}
     </div>
   )

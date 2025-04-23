@@ -10,7 +10,7 @@ for (let i = 1; i <= 20; i++) {
 export const MealType = {
   idMeal: z.string(),
   strMeal: z.string(),
-  strCategory: z.string().nullable().optional(),
+  strCategory: z.string(),
   strArea: z.string().nullable().optional(),
   strInstructions: z.string().nullable().optional(),
   strMealThumb: z.string().nullable().optional(),
