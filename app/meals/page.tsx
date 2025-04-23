@@ -1,12 +1,13 @@
 // import { useEffect } from 'react';
 // import { trpc } from '../_trpc/client';
 // import RandomMeal from '../components/RandomMeal';
-import Categories from '../ui/components/Categories';
 import Search from '../ui/components/Search';
 import { lazy, Suspense } from 'react';
 // import { getLocation } from '@/app/utils/location'
 
 const LazyRandom = lazy(() => import('@/app/ui/components/RandomMeal'));
+const LazyCategories = lazy(() => import('@/app/ui/components/Categories'));
+
 
 export default function MealsPage() {
   // const {weatherRouter} = trpc;
@@ -18,9 +19,10 @@ export default function MealsPage() {
 
   return (
     <div className="container mx-auto p-4">
-      <Categories />
+      <Suspense fallback={<div>Check</div>}>
+        <LazyCategories />
+      </Suspense>
       <Search />
-
       <Suspense fallback={<div>Check</div>}>
         <LazyRandom />
       </Suspense>

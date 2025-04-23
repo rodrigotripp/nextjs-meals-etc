@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 interface LinkPillProps {
   type: 'category' | 'area' | 'ingridient';
-  string: string | null | undefined;
+  string: string;
   color?: '#b36e88' | '#edd6df' | '#eb7777' | '#c9e7db' | '#fae1b4' | '#c6e4e7' | string;
 }
 
