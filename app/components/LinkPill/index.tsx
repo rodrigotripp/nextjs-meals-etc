@@ -1,18 +1,22 @@
 import Link from 'next/link';
-import { PillColor } from '../MealArticle';
 
 interface LinkPillProps {
   type: 'category' | 'area' | 'ingridient';
-  string: string;
-  color?: PillColor;
+  string: string | null | undefined;
+  color?: '#b36e88' | '#edd6df' | '#eb7777' | '#c9e7db' | '#fae1b4' | '#c6e4e7' | string;
 }
 
 function LinkPill({ string, color, type }: LinkPillProps) {
-  const colorCheck = color ? color : 'red';
+  const colors = ['#b36e88', '#edd6df', '#eb7777', '#c9e7db', '#fae1b4', '#c6e4e7'];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  const randomColor = colors[randomIndex];
+  const pillColor = color || randomColor;
+
   return (
     <Link href={`/${type}/${string}`}>
       <span
-        className={`mb-2 mr-2 inline-block rounded-full bg-${colorCheck}-200 px-3 py-1 text-sm font-semibold`}
+        className={`mb-2 mr-2 inline-block rounded-full px-3 py-1 text-sm font-semibold`}
+        style={{ backgroundColor: pillColor }}
       >
         {string}
       </span>

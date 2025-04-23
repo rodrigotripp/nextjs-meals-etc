@@ -3,13 +3,7 @@ import Image from 'next/image';
 import LinkPill from '../LinkPill';
 import { getIngredients } from '@/app/_utils/parseIngredients';
 
-export type PillColor = 'green' | 'blue' | 'red' | 'cyan' | 'pink' | 'gray';
-
 export default function MealArticle(meal: Meal) {
-  const colors: PillColor[] = ['green', 'blue', 'red', 'cyan', 'pink', 'gray'];
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  const color = colors[randomIndex] as PillColor;
-
   const ingredients = getIngredients(meal);
   return (
     <div className="overflow-hidden rounded-lg bg-white pb-4 shadow-lg">
@@ -29,10 +23,8 @@ export default function MealArticle(meal: Meal) {
           <h1 className="mb-2 text-2xl font-bold">{meal.strMeal}</h1>
           <div>
             <span>Categories: </span>
-            {meal.strCategory && (
-              <LinkPill type={'category'} string={meal.strCategory} color={color} />
-            )}
-            {meal.strArea && <LinkPill type={'area'} string={meal.strArea} color={color} />}
+            {meal.strCategory && <LinkPill type={'category'} string={meal.strCategory} />}
+            {meal.strArea && <LinkPill type={'area'} string={meal.strArea} />}
             <br />
             {meal.strTags ? <span>Tags: </span> : null}
             {meal.strTags &&
