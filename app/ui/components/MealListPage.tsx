@@ -1,8 +1,8 @@
 import { lazy, Suspense } from 'react';
 import Link from 'next/link';
 import SearchResults from './SearchResultSkeleton';
-import { caller } from '../server/trpc/caller';
-const LazySearchResults = lazy(() => import('@/app/components/SearchResults'));
+import { caller } from '../../server/trpc/caller';
+const LazySearchResults = lazy(() => import('@/app/ui/components/SearchResults'));
 
 type MealListPageProps = {
   type: 'category' | 'area';

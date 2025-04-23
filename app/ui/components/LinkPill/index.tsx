@@ -11,7 +11,7 @@ function LinkPill({ string, color, type }: LinkPillProps) {
   const randomIndex = Math.floor(Math.random() * colors.length);
   const randomColor = colors[randomIndex];
   const pillColor = color || randomColor;
-
+  if (string) return;
   return (
     <Link href={`/${type}/${string}`}>
       <span

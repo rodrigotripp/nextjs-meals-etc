@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { trpc } from '../_trpc/client';
-import { Meal } from '../types';
+import { trpc } from '../../_trpc/client';
+import { Meal } from '../../types';
 import SearchResults from './SearchResults';
 
 export default function Search() {

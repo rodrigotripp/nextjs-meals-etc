@@ -1,5 +1,5 @@
 import { caller } from './server/trpc/caller';
-import Counter from './components/Counter';
+import Counter from './ui/components/Counter';
 
 export default async function Home() {
   const randomMeal = await caller.mealRouter.getRandomMeal();

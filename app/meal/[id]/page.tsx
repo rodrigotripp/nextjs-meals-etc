@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import MealArticle from '@/app/components/MealArticle';
+import MealArticle from '@/app/ui/components/MealArticle';
 import { caller } from '@/app/server/trpc/caller';
 export default async function MealDetailPage({ params }: { params: { id: string } }) {
   const { id } = params;

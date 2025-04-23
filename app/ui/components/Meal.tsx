@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Meal as MealType } from '../types';
+import { Meal as MealType } from '../../types';
 
 function Meal(props: MealType) {
   const { strMeal, strMealThumb, strCategory, strArea, idMeal, refetch } = props;

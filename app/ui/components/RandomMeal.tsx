@@ -1,5 +1,5 @@
-import Meal from '../components/Meal';
-import { caller } from '../server/trpc/caller';
+import Meal from './Meal';
+import { caller } from '../../server/trpc/caller';
 export default async function RandomMeal() {
   const randomMeal = await caller.mealRouter.getRandomMeal();
 
