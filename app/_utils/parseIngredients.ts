@@ -1,12 +1,12 @@
 import { Meal } from '@/app/types';
 
-interface ingridientsArray {
+export interface ingridients {
   ingredient: string;
   measure: string;
 }
 
 export const getIngredients = (meal: Meal) => {
-  const ingredients: ingridientsArray[] = [];
+  const ingredients: ingridients[] = [];
   for (let i = 1; i <= 20; i++) {
     const key = `strIngredient${i}` as keyof Meal;
     const measureKey = `strMeasure${i}` as keyof Meal;

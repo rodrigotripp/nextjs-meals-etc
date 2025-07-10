@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import MealArticle from '@/app/ui/components/MealArticle';
 import { caller } from '@/app/server/trpc/caller';
-export default async function MealDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+import { PageProps } from '@/app/types';
+
+export default async function MealDetailPage({ params }: PageProps ) {
+  const { id } = await params;
   const mealQuery = await caller.mealRouter.getMealById({ id });
 
   if (!id) {

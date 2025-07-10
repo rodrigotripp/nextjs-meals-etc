@@ -75,3 +75,6 @@ export const WeatherApiResponse = z.object({
   list: z.array(z.object(CityType)),
   message: z.string(),
 });
+export interface PageProps {
+  params: Promise<{ id: string }>
+}
